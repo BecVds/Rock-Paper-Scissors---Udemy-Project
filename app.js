@@ -34,7 +34,7 @@ const getComputerChoice = function(){
     }
 };
 
-const getWinner = function(cChoice, pChoice){
+const getWinner = (cChoice, pChoice) => {
     if(cChoice === pChoice){
         return RESULT_DRAW;
     } else if(
@@ -48,7 +48,7 @@ const getWinner = function(cChoice, pChoice){
     }
 }
 
-startGameBtn.addEventListener('click', function startGame(){  
+startGameBtn.addEventListener('click', function(){  
     if(gameIsRunning){
         return;
     }
@@ -60,4 +60,34 @@ startGameBtn.addEventListener('click', function startGame(){
     console.log(computerChoice);
     const winner = getWinner(computerChoice, playerSelection);
     console.log(winner);
+    let message = `you picked ${playerSelection}, computer picked ${computerChoice}, therefore you`;
+    if (winner === RESULT_DRAW){
+        message = message + ` had a DRAW`;
+    } else if (winner === RESULT_PLAYER_WINS){
+        message = message + ` WON`;
+    } else if (winner === RESULT_COMPUTER_WINS){
+        message = message + ` LOST`;
+    }
+    alert(message);
+    gameIsRunning = false;
 });
+
+
+
+// const bindTest = function(myFunction, ...sum){
+//     let total = 0;
+//     for (num of sum){
+//         total += num
+//     };
+//     myFunction(total);
+// };
+
+// const anotherFunction = (anotherResult, result) => {
+//     let total = result + anotherResult;
+//     console.log(`this is the result ${total}`);
+//     console.log(result);
+// };
+
+// bindTest(anotherFunction.bind(this, 14), 1,3,1,2);
+// bindTest(anotherFunction.bind(this, 3), 1,3,1,2);
+// bindTest(anotherFunction.bind(this, 4), 1,3,1,2);
